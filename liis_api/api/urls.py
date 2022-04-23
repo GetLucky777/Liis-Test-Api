@@ -1,12 +1,6 @@
 from django.urls import path
 
-from .views import (
-    SignUp,
-    ArticleCreate,
-    ArticleRead,
-    ArticleDetail
-)
-
+from .views import ArticleCreate, ArticleDetail, ArticleRead, SignUp
 
 urlpatterns = [
     path('signup/', SignUp.as_view()),

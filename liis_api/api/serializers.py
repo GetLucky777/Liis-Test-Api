@@ -5,7 +5,7 @@ from django.core.validators import validate_email
 from django.forms import ValidationError
 from rest_framework import serializers
 
-from articles.models import Article
+from liis_api.articles.models import Article
 
 User = get_user_model()
 

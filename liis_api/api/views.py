@@ -1,14 +1,12 @@
 from django.contrib.auth import get_user_model
-from rest_framework.generics import (
-    CreateAPIView,
-    ListAPIView,
-    RetrieveUpdateDestroyAPIView
-)
+from rest_framework.generics import (CreateAPIView, ListAPIView,
+                                     RetrieveUpdateDestroyAPIView)
 from rest_framework.permissions import IsAdminUser
 
-from articles.models import Article
-from .serializers import UserSerializer, ArticleSerializer
+from liis_api.articles.models import Article
+
 from .permissions import IsAuthorOrReadOnly
+from .serializers import ArticleSerializer, UserSerializer
 
 User = get_user_model()
 
