@@ -5,7 +5,7 @@ from django.core.validators import validate_email
 from django.forms import ValidationError
 from rest_framework import serializers
 
-from liis_api.articles.models import Article
+from articles.models import Article
 
 User = get_user_model()
 
@@ -44,7 +44,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
         slug_field='username',
-        queryset=User.objects.all()
+        read_only=True
     )
 
     class Meta:

@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from rest_framework.generics import (CreateAPIView, ListAPIView,
                                      RetrieveUpdateDestroyAPIView)
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly
 
-from liis_api.articles.models import Article
+from articles.models import Article
 
 from .permissions import IsAuthorOrReadOnly
 from .serializers import ArticleSerializer, UserSerializer
@@ -11,12 +11,12 @@ from .serializers import ArticleSerializer, UserSerializer
 User = get_user_model()
 
 
-class SignUp(CreateAPIView):
+class SignUpView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class ArticleRead(ListAPIView):
+class ArticleReadView(ListAPIView):
     serializer_class = ArticleSerializer
 
     def get_queryset(self):
@@ -28,9 +28,9 @@ class ArticleRead(ListAPIView):
         return Article.objects.filter(public=True)
 
 
-class ArticleDetail(RetrieveUpdateDestroyAPIView):
+class ArticleDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = ArticleSerializer
-    permission_classes = [IsAuthorOrReadOnly]
+    permission_classes = [IsAuthorOrReadOnly, IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -41,7 +41,7 @@ class ArticleDetail(RetrieveUpdateDestroyAPIView):
         return Article.objects.filter(public=True)
 
 
-class ArticleCreate(CreateAPIView):
+class ArticleCreateView(CreateAPIView):
     permission_classes = [IsAdminUser]
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
