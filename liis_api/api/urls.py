@@ -1,7 +1,16 @@
 from django.urls import path
 
-from .views import UserViewSet
+from .views import (
+    SignUp,
+    ArticleCreate,
+    ArticleRead,
+    ArticleDetail
+)
+
 
 urlpatterns = [
-    path('create_user/', UserViewSet.as_view()),
+    path('signup/', SignUp.as_view()),
+    path('create_article/', ArticleCreate.as_view()),
+    path('articles/', ArticleRead.as_view()),
+    path('articles/<int:pk>/', ArticleDetail.as_view()),
 ]

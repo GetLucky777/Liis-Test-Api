@@ -22,3 +22,7 @@ class Article(models.Model):
         auto_now_add=True,
         verbose_name='Дата публикации статьи'
     )
+    public = models.BooleanField(
+        default=False,
+        verbose_name='Область доступа к статье'
+    )
