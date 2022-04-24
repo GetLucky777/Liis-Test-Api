@@ -11,6 +11,7 @@ http://getlucky777.pythonanywhere.com/
 
 Автоматически собираемая документация доступна по адресам:
 http://getlucky777.pythonanywhere.com/redoc/
+
 http://getlucky777.pythonanywhere.com/swagger/
 
 # Доступные эндпоинты
