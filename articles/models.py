@@ -24,5 +24,8 @@ class Article(models.Model):
     )
     public = models.BooleanField(
         default=False,
-        verbose_name='Область доступа к статье'
+        verbose_name='Публичная статья'
     )
+
+    def __str__(self):
+        return self.title
