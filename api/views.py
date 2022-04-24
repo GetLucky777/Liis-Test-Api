@@ -1,11 +1,11 @@
 from django.contrib.auth import get_user_model
 from rest_framework.generics import (CreateAPIView, ListAPIView,
                                      RetrieveUpdateDestroyAPIView)
-from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from articles.models import Article
 
-from .permissions import IsAuthorOrReadOnly
+from .permissions import IsAuthorOrReadOnly, IsAuthorUser
 from .serializers import ArticleSerializer, UserSerializer
 
 User = get_user_model()
@@ -42,7 +42,7 @@ class ArticleDetailView(RetrieveUpdateDestroyAPIView):
 
 
 class ArticleCreateView(CreateAPIView):
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthorUser]
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 

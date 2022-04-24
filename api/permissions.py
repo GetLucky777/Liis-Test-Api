@@ -14,3 +14,15 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
            and request.method in permissions.SAFE_METHODS):
             return True
         return False
+
+
+class IsAuthorUser(permissions.BasePermission):
+
+    message = 'Вы не можете публиковать статьи!'
+    code = status.HTTP_403_FORBIDDEN
+
+    def has_permission(self, request, view):
+        user = request.user
+        if user.groups.filter(name='Author').exists():
+            return True
+        return False
