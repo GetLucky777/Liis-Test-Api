@@ -16,7 +16,7 @@ http://getlucky777.pythonanywhere.com/swagger/
 
 # Доступные эндпоинты
 
-## /api/signup/ 
+## api/signup/ 
 Регистрация новых пользователей с ролью "подписчик".
 
 Пример запроса:
@@ -34,7 +34,7 @@ http://getlucky777.pythonanywhere.com/swagger/
 }
 ```
 
-## /api/create_article/
+## api/create_article/
 Добавление новых статей ролью "автор".
 
 Пример запроса:
@@ -72,7 +72,7 @@ http://getlucky777.pythonanywhere.com/swagger/
 }
 ```
 
-## /api/articles/
+## api/articles/
 Запрос закрытых/публичных статей в зависимости от выполненной аутентификации.
 
 Пример ответа на запрос от пользователя с ролю "подписчик:
@@ -135,7 +135,7 @@ http://getlucky777.pythonanywhere.com/swagger/
 ]
 ```
 
-## /api/articles/pk/
+## api/articles/pk/
 Запрос конкретной закрытой/публичной статьи в зависимости от выполненной аутентификации.
 
 ```
